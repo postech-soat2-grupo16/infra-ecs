@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.aws_region
+}
+
 #Configuração do Terraform State
 terraform {
   backend "s3" {
