@@ -27,5 +27,4 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
-          TF_VAR_ecr_image: ${{ vars.ECR_IMAGE }}
-          TF_VAR_execution_role_ecs: ${{ secrets.ECS_EXECUTION_ROLE }}
+          TF_VAR_security_group_cluster_ecs: ${{ vars.SG_CLUSTER_ECS}}
