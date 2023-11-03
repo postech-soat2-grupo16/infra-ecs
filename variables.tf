@@ -6,5 +6,5 @@ variable "aws_region" {
 variable "security_group_cluster_ecs" {
   description = "Cluster ECS Security group"
   type    = string
-  default = "value"
+  default = "sg-"
 }
