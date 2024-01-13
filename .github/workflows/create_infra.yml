@@ -13,13 +13,16 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v3
+
       #AWS CREDENTIALS
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-region: ${{ vars.AWS_REGION}}
-          role-to-assume: ${{ secrets.AWS_ROLE }}
-          role-session-name: myGitHubActions
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
       #Terraform execution
       - name: Terraform Init
         run: terraform init
@@ -27,4 +30,5 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
         env:
-          TF_VAR_security_group_cluster_ecs: ${{ vars.SG_CLUSTER_ECS}}
+          TF_VAR_sg_load_balancer_fastfood: ${{ vars.SG_LOAD_BALANCER }}
+          TF_VAR_vpc_id: ${{ vars.VPC_ID }}

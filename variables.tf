@@ -3,8 +3,14 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "security_group_cluster_ecs" {
-  description = "Cluster ECS Security group"
-  type    = string
-  default = "sg-"
+variable "sg_load_balancer_fastfood" {
+  description = "SG Load Balancer FastFood"
+  type        = string
+  default     = "sg-0984492cc7da3f5da"
+}
+
+variable "vpc_id" {
+  description = "VPC ID"
+  type        = string
+  default     = "vpc-02704242632eb2597"
 }
